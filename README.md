@@ -1,6 +1,6 @@
 # Adobe-ExtendScript
 
-> `Language` [English]('./README-English.md') (Machine translation)
+> `Language` [English]('/README-English.md') (Machine translation)
 
 `Adobe` 软件 `ExtendScript` 脚本调试，理论支持`Adobe`平台全部软件调试。
 
