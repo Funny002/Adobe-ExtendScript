@@ -13,4 +13,15 @@ const platform = (function (platform) {
   return 'Other';
 })(os.platform().toLowerCase());
 
-module.exports = {platform};
+// 随机字符
+function randomStr(key = 'x') {
+  const time = Date.now() || performance.now();
+  const random = (time + Math.random() * 16) % 16 | 0;
+  return (key === 'x' ? random : (random & 0x3) | 0x8).toString(16);
+}
+
+function getUUID(format = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx') {
+  return format.replace(/[xy]/g, v => randomStr(v));
+}
+
+module.exports = {platform, getUUID};

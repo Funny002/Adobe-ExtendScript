@@ -4,9 +4,18 @@
   "description": "Adobe product ExtendScript debugging",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node ./example.js"
   },
-  "keywords": ["Adobe", "Extend", "Script", "ExtendScript", "Javascript"],
+  "keywords": [
+    "Adobe",
+    "Extend",
+    "Script",
+    "ExtendScript",
+    "Javascript"
+  ],
   "author": "Funny002 <2048412928@qq.com>",
-  "license": "MPL2.0"
+  "license": "MPL2.0",
+  "dependencies": {
+    "uglify-js": "^3.17.4"
+  }
 }
