@@ -1,6 +1,6 @@
 # Adobe-ExtendScript
 
-> `语言` [中文]('./README.md')
+> `语言` [中文](./README.md)
 
 `Adobe` software `ExtendScript` script debugging,
 theoretically support `Adobe` platform all software debugging.
