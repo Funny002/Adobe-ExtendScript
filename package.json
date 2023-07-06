@@ -1,0 +1,12 @@
+{
+  "name": "adobe-extendscript",
+  "version": "1.0.0",
+  "description": "Adobe product ExtendScript debugging",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": ["Adobe", "Extend", "Script", "ExtendScript", "Javascript"],
+  "author": "Funny002 <2048412928@qq.com>",
+  "license": "MPL2.0"
+}
