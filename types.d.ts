@@ -7,8 +7,8 @@ interface ExtendScript {
   includes: string[];
   application: string;
   getProduct: {
-    exec: getProduct
-    execSync: getProduct
+    execSync(): getProduct;
+    exec(): Promise<getProduct>;
   };
 
   (script: string): Promise<any>;

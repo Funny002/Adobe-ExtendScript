@@ -1,6 +1,6 @@
 {
   "name": "adobe-extendscript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Adobe product ExtendScript debugging",
   "main": "index.js",
@@ -12,7 +12,13 @@
     "Extend",
     "Script",
     "ExtendScript",
-    "Javascript"
+    "Javascript",
+    "Photoshop",
+    "Illustrator",
+    "Audition",
+    "After Effects",
+    "Premiere Pro",
+    "InDesign"
   ],
   "types": "./types.d.ts",
   "author": "Funny002 <2048412928@qq.com>",
