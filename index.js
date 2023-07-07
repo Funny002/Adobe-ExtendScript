@@ -1,3 +1,5 @@
+/// <reference path="./types.d.ts" />
+
 /**
  * @author Funny002
  * @email 2048412928@qq.com

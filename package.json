@@ -13,6 +13,7 @@
     "ExtendScript",
     "Javascript"
   ],
+  "types": "./types.d.ts",
   "author": "Funny002 <2048412928@qq.com>",
   "license": "MPL2.0",
   "dependencies": {
