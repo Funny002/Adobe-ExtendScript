@@ -23,6 +23,7 @@ function handlesApplication(application) {
   }
   // has app name
   const appsMap = getProduct.execSync();
+
   if (!appsMap[application]) throw new Error(`Application name ${ application } not found may be [${ Object.keys(appsMap) }]`);
   return appsMap[application];
 }
