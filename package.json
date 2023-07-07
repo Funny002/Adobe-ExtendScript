@@ -1,6 +1,7 @@
 {
   "name": "adobe-extendscript",
   "version": "1.0.0",
+  "private": false,
   "description": "Adobe product ExtendScript debugging",
   "main": "index.js",
   "scripts": {
