@@ -22,44 +22,48 @@ function getTemp(result) {
   }
 }
 
-function getHeaderScript(includes) {
-  return '';
-}
-
 function handlerMinifyFunc(script) {
-  const options = { fromString: true, compress: { conditionals: false } };
+  const options = { sourceMap: false, mangle: false, compress: { conditionals: false } };
   return uglify.minify(script, options).code;
 }
 
 module.exports = {
-  create(options) {
-    options.resultName = getUUID('ExtendScript-Result-xxx-xxx4-xx4x.js');
-    const { resultName, minify, includes, scripts } = options;
+  handlerOptions(opt) {
+    const resultName = getUUID('Result-xxx-xxx4-xx4x.js');
+    opt.resultName = path.resolve(opt.tempDir, resultName);
+    opt.runName = getUUID('Run-xxx-xxx4-xx4x');
 
-    // 组合
-    let content = getHeaderScript(includes) + '\r' + callbackStr.replace(/\$\{([^\}]+)\}/g, function (types) {
-      if (types === '${temp}') return getTemp(resultName);
-      if (types === '${script}') return scripts;
+    const includes = [];
+    opt.tempIncludes = opt.includes.reduce(function (value, paths) {
+      const content = fs.readFileSync(paths, { encoding: 'utf8' });
+      const newPath = path.resolve(opt.tempDir, getUUID('xxxxxxxx.js'));
+      fs.writeFileSync(newPath, opt.minify ? handlerMinifyFunc(content) : content, { encoding: 'utf8' });
+      includes.push(`$.evalFile("${ newPath }");`);
+      return value.concat(newPath);
+    }, []);
+
+    const content = includes.concat(callbackStr.replace(/\$\{([^\}]+)\}/g, function (types) {
+      if (types === '${temp}') return getTemp(opt.resultName);
+      if (types === '${script}') return opt.scripts;
       return types;
-    });
+    })).join('\r');
 
-    // 压缩
-    if (minify) content = handlerMinifyFunc(content);
-
-    // return new Promise((resolve, reject) => {
-    //   console.log(scriptStr, options);
-    //   resolve(true);
-    // });
+    opt.scripts = opt.minify ? handlerMinifyFunc(content) : content;
   },
-  getResult({ resultName }, timeout = 1000) {
-    const paths = path.resolve(os.tmpdir(), resultName);
+  getResult(opt, timeout = 1000) {
+    const data = 'Yes';
+    // const data = require(opt.resultName);
     return new Promise(function (resolve, reject) {
-      const data = require(paths);
       setTimeout(() => {
-        fs.unlink(paths, function (err) {
-          if (err) reject(err);
-        });
-        resolve(data);
+        try {
+          for (const paths of opt.tempIncludes) {
+            fs.unlinkSync(paths);
+          }
+          fs.unlinkSync(opt.resultName);
+          resolve(data);
+        } catch (e) {
+          reject(e);
+        }
       }, timeout);
     });
   },

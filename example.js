@@ -6,6 +6,8 @@
 
 const ExtendScript = require('./index.js');
 
-ExtendScript().then(data => {
+ExtendScript.application = 'photoshop';
+
+ExtendScript(`alert('Text')`).then(data => {
   console.log('ExtendScript', data);
 });

@@ -4,7 +4,7 @@
  * @url  http://www.github.com/Funny002
  */
 
-// const {exec} = require('child_process');
+const { exec } = require('child_process');
 // module.exports = {
 //   exec(command) {
 //     return new Promise((resolve, reject) => {
@@ -16,3 +16,11 @@
 //     });
 //   },
 // };
+function RunExec(opt) {
+  console.log(opt);
+  return new Promise((resolve, reject) => {
+    resolve();
+  });
+}
+
+module.exports = RunExec;
