@@ -1,6 +1,6 @@
 {
   "name": "adobe-extendscript",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "Adobe product ExtendScript debugging",
   "main": "index.js",
@@ -22,8 +22,16 @@
   ],
   "types": "./types.d.ts",
   "author": "Funny002 <2048412928@qq.com>",
-  "license": "MPL2.0",
+  "license": "MPL-2.0",
   "dependencies": {
     "uglify-js": "^3.17.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Funny002/Adobe-ExtendScript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Funny002/Adobe-ExtendScript/issues"
+  },
+  "homepage": "https://github.com/Funny002/Adobe-ExtendScript#readme"
 }
